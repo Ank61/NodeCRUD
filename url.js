@@ -1,0 +1,1 @@
+module.exports = `mongodb+srv://ankit:ankit@cluster0.en4zs95.mongodb.net/test?retryWrites=true&w=majority`
