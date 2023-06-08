@@ -1,0 +1,415 @@
+{
+    "swagger": "2.0",
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:8080",
+    "paths": {
+        "/users": {
+            "get": {
+                "summary": "Get all the users",
+                "description": "Get all the users",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Fetched",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersResponse"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Insert the user",
+                "description": "Insert the user",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "task object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Task"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful inserted",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{userID}": {
+            "put": {
+                "summary": "Update the user",
+                "description": "Update the user",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userID",
+                        "in": "path",
+                        "description": "userid from where it would be Updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "task object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Task"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful updated",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid userID value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete the task",
+                "description": "Delete the task",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userID",
+                        "in": "path",
+                        "description": "task id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "summary": "Get all the products",
+                "description": "Get all the products",
+                "produces": [
+                    "application/json"
+                ], 
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Fetched",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/productResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/invalidProductResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Insert the product",
+                "description": "Insert the product",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/productSchema"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful inserted the product",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/productsResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid value",
+                        "schema": {
+                            "$ref": "#/definitions/invalidProductResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{productID}": {
+            "put": {
+                "summary": "Update the product",
+                "description": "Update the product",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productID",
+                        "in": "path",
+                        "description": "productID from where it would be Updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/productSchema"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful updated the product",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/productResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid userID value",
+                        "schema": {
+                            "$ref": "#/definitions/invalidProductResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete the product",
+                "description": "Delete the product",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productID",
+                        "in": "path",
+                        "description": "productID that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successfully Deleted the product",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/productResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/invalidProductResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "usersResponse": {
+            "type": "object",
+            "properties": {
+                "userID": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                }
+            }
+        },
+        "Task": {
+            "type": "object",
+            "properties": {
+                "userID": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "productResponse": {
+            "type": "object",
+            "properties": {
+                "userID": {
+                    "type": "string"
+                },
+                "productID": {
+                    "type": "string"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "productPrice": {
+                    "type": "string"
+                }
+            }
+        },
+        "productSchema": {
+            "type": "object",
+            "properties": {
+                "userID": {
+                    "type": "string"
+                },
+                "productID": {
+                    "type": "string"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "productPrice": {
+                    "type": "string"
+                }
+            }
+        },
+        "invalidProductResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

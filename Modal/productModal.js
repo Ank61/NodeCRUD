@@ -2,16 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-    userID :{
-      type : Number
+    userID :{//Required
+      type : String,//can be dublicate because user can buy may products
     },
-    productID: {
+    productID: {//Required
+        type: String,
+        unique :true,
+      },
+    productName: {//Required
         type: String,
       },
-    productName: {
-        type: String,
-      },
-    productPrice : {
+    productPrice : { //not a required field because customer prebook without knowing the price
         type: String,
       },
 });
